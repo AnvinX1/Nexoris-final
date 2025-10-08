@@ -7,25 +7,25 @@ const teamMembers = [
   {
     name: "Rajesh Kumar",
     role: "CEO & Founder",
-    image: "/professional-indian-male-ceo.jpg",
+    image: "/team-member-1.jpg",
     linkedin: "#",
   },
   {
-    name: "Priya Sharma",
-    role: "CTO",
-    image: "/professional-indian-female-cto.jpg",
+    name: "Ashley Stewart",
+    role: "Community Manager",
+    image: "/team-member-2.jpg",
     linkedin: "#",
   },
   {
     name: "Arun Patel",
     role: "Head of Engineering",
-    image: "/professional-indian-male-engineer.jpg",
+    image: "/team-member-3.jpg",
     linkedin: "#",
   },
   {
-    name: "Meera Reddy",
+    name: "Sarah Johnson",
     role: "Head of Operations",
-    image: "/professional-indian-female-operations.jpg",
+    image: "/team-member-4.jpg",
     linkedin: "#",
   },
 ]
@@ -33,34 +33,54 @@ const teamMembers = [
 export function TeamSection() {
   return (
     <section id="team" className="py-16 md:py-20 px-4 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border))_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
-
-      <div className="container mx-auto max-w-6xl relative">
-        <motion.div
-          className="text-center mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/20" />
-            <div className="h-1 w-1 rounded-full bg-white/40" />
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/20" />
-          </div>
-
-          <h2
-            className="text-3xl sm:text-4xl font-bold text-white mb-3 md:mb-4"
-            style={{ fontFamily: "var(--font-playfair)" }}
+      <div className="container mx-auto max-w-7xl">
+        
+        {/* Top Section - Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-16">
+          
+          {/* Left Section - Text Content */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            Meet Our Team
-          </h2>
-          <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-            Experienced leaders driving innovation and excellence
-          </p>
-        </motion.div>
+            <motion.div
+              className="w-12 h-px bg-primary mb-4"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            />
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              OUR TEAM
+            </h2>
+            
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Meet the talented individuals who make Nexoris a leader in technology innovation. Our diverse team brings together expertise from around the world to deliver exceptional solutions.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {/* Right Section - Navigation Dots */}
+          <motion.div
+            className="flex justify-center lg:justify-end items-start"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col gap-2">
+              <div className="w-2 h-2 rounded-full bg-foreground"></div>
+              <div className="w-2 h-2 rounded-full bg-muted-foreground"></div>
+              <div className="w-2 h-2 rounded-full bg-muted-foreground"></div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Section - Team Member Portraits */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -70,42 +90,37 @@ export function TeamSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative border border-border rounded-lg p-5 md:p-6 bg-card/20 backdrop-blur-sm hover:bg-card/40 hover:border-border/50 transition-all duration-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-border rounded-tl-lg" />
-                <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-border rounded-tr-lg" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-border rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-border rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="relative w-20 h-20 md:w-24 md:h-24 mx-auto mb-3 md:mb-4">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-border to-accent/50 p-[2px]">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-background">
-                      <img
-                        src={member.image || "/placeholder.svg?height=96&width=96&query=team%20member%20portrait"}
-                        alt={member.name}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        onError={(e) => {
-                          const target = e.currentTarget as HTMLImageElement
-                          target.onerror = null
-                          target.src = "/team-member-portrait.png"
-                        }}
-                      />
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
+                {/* Placeholder for team member image */}
+                <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-foreground/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-foreground">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </span>
                     </div>
-                  </div>
-
-                  <div className="absolute inset-0 rounded-full bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <a
-                      href={member.linkedin}
-                      className="bg-foreground text-background p-2 rounded-full hover:bg-foreground/90 transition-colors"
-                      aria-label={`${member.name}'s LinkedIn profile`}
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </a>
+                    <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
+                    <p className="text-sm text-muted-foreground">{member.role}</p>
                   </div>
                 </div>
-
-                <div className="text-center">
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-xs md:text-sm text-muted-foreground">{member.role}</p>
+                
+                {/* Overlay with name and role */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
+                    <p className="text-sm text-white/80">{member.role}</p>
+                  </div>
+                </div>
+                
+                {/* LinkedIn overlay */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <a
+                    href={member.linkedin}
+                    className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+                    aria-label={`${member.name}'s LinkedIn profile`}
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </a>
                 </div>
               </div>
             </motion.div>
