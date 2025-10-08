@@ -126,7 +126,7 @@ interface ParticleTextEffectProps {
   words?: string[]
 }
 
-const DEFAULT_WORDS = ["LeLo", "SAAS", "PLATFORM", "LELO"]
+const DEFAULT_WORDS = ["NEXORIS", "INNOVATION", "TECHNOLOGY", "FUTURE", "DIGITAL", "SOLUTIONS", "AI", "CLOUD", "DATA", "SMART"]
 
 export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -327,6 +327,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     }
   }, [resolvedTheme])
 
+
   // Handle theme changes
   useEffect(() => {
     if (mounted) {
@@ -414,11 +415,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
   }, [mounted, words, isDark])
 
   if (!mounted) {
-    return (
-      <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-        <div className="text-foreground text-4xl font-bold">NEXORIS</div>
-      </div>
-    )
+    return null
   }
 
   const canvasBackground = isDark ? "black" : "white"
