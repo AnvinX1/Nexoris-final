@@ -17,7 +17,7 @@ export function HeroSection() {
 
   return (
     <section className="py-12 md:py-20 px-4 relative overflow-hidden min-h-[80vh] md:min-h-screen flex flex-col justify-between">
-      <div className="flex-1 flex items-start justify-center pt-12 md:pt-20">
+      <div className="flex-1 flex items-center justify-center">
         <ParticleTextEffect words={["NEXORIS", "TECH", "SOLUTIONS", "INNOVATION"]} />
       </div>
 

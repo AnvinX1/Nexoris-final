@@ -1,168 +1,114 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Target, Lightbulb, Users, Zap, Shield, TrendingUp } from "lucide-react"
+import { Cloud, BarChart3, Layers, Users, ArrowUp, Database, Cpu, Network } from "lucide-react"
+import { ParticleBackground } from "./particle-background"
 
-const visionData = {
-  mission: {
-    icon: Target,
-    title: "Our Mission",
-    description:
-      "To deliver innovative technology solutions that empower businesses to achieve their full potential and stay ahead in a rapidly evolving digital landscape.",
-    highlights: ["Innovation First", "Client Success", "Digital Excellence"],
-  },
-  vision: {
-    icon: Lightbulb,
-    title: "Our Vision",
-    description:
-      "To be the most trusted technology partner for businesses worldwide, recognized for excellence, innovation, and transformative impact.",
-    highlights: ["Global Leadership", "Trusted Partner", "Transformative Impact"],
-  },
-}
-
-const coreValues = [
+const visionFeatures = [
   {
-    icon: Zap,
-    title: "Innovation",
-    description: "Pushing boundaries with cutting-edge solutions",
+    icon: Cloud,
+    title: "Cloud Analytics Modernization",
+    description: "Transform your data infrastructure with cutting-edge cloud solutions that scale with your business needs and provide real-time insights.",
   },
   {
-    icon: Shield,
-    title: "Integrity",
-    description: "Building trust through transparency and honesty",
+    icon: BarChart3,
+    title: "Data Science Acceleration",
+    description: "Leverage advanced analytics and machine learning to unlock hidden patterns in your data and drive intelligent decision-making.",
+  },
+  {
+    icon: Layers,
+    title: "Versatility in Application",
+    description: "Our flexible solutions adapt to your unique business requirements, ensuring seamless integration across all your systems and processes.",
   },
   {
     icon: Users,
-    title: "Collaboration",
-    description: "Achieving more together through teamwork",
-  },
-  {
-    icon: TrendingUp,
-    title: "Excellence",
-    description: "Delivering quality in everything we do",
+    title: "Full Customer Experience Service",
+    description: "Deliver exceptional customer experiences through comprehensive service design, from initial contact to long-term relationship management.",
   },
 ]
 
 export function VisionSection() {
   return (
-    <section id="vision" className="relative py-16 md:py-24 px-4 bg-background overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
+    <section id="vision" className="relative py-16 md:py-24 px-4 bg-background overflow-hidden min-h-screen">
       <div className="container mx-auto max-w-7xl relative z-10">
-        <motion.div
-          className="text-center mb-12 md:mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 min-h-[80vh]">
+          
+          {/* Left Section - Hero Style with Particle Background */}
           <motion.div
-            className="w-20 h-px bg-gradient-to-r from-transparent via-foreground to-transparent mx-auto mb-6"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative flex flex-col justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          />
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
-            style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Vision & Values
-          </h2>
-          <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Guided by purpose, driven by innovation
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-20">
-          {Object.values(visionData).map((item, index) => (
-            <motion.div
-              key={item.title}
-              className="group relative"
-              initial={{ opacity: 0, x: index === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8 }}
-            >
-              <div className="relative bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 hover:border-border/50 transition-all duration-500 h-full overflow-hidden">
-                <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-border rounded-tr-2xl" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 border-b border-l border-border rounded-bl-2xl" />
-
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-accent/50 border border-border mb-4 md:mb-6 group-hover:bg-accent group-hover:border-border/50 transition-all duration-500">
-                    <item.icon className="h-7 w-7 md:h-8 md:w-8 text-foreground" />
-                  </div>
-
-                  <h3
-                    className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p className="text-muted-foreground leading-relaxed mb-4 md:mb-6 text-base md:text-lg group-hover:text-foreground/80 transition-colors">
-                    {item.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {item.highlights.map((highlight) => (
-                      <span
-                        key={highlight}
-                        className="px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm bg-accent/50 border border-border rounded-full text-foreground/80 group-hover:bg-accent group-hover:border-border/50 transition-all duration-300"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <h3
-            className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8 md:mb-12 px-4"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            Our Core Values
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {coreValues.map((value, index) => (
-              <motion.div
-                key={value.title}
-                className="group relative bg-card/40 backdrop-blur-sm border border-border rounded-xl p-5 md:p-6 hover:bg-accent/50 hover:border-border/50 transition-all duration-300 overflow-hidden"
+            {/* Particle Background */}
+            <ParticleBackground particleCount={40} className="opacity-60" />
+            
+            <div className="relative z-10">
+              <motion.h2
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
               >
-                <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-border rounded-tr-xl" />
-                <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-border rounded-bl-xl" />
+                Let Your Data Take Your Business to Higher Grounds
+              </motion.h2>
+              
+              <motion.p
+                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                Transform your business with cutting-edge data solutions that drive innovation, 
+                efficiency, and growth. Our comprehensive approach ensures your data becomes 
+                your most powerful competitive advantage.
+              </motion.p>
+            </div>
+          </motion.div>
 
-                <div className="flex flex-col items-center text-center relative z-10">
-                  <div className="w-12 h-12 rounded-lg bg-accent/50 border border-border flex items-center justify-center mb-3 md:mb-4 group-hover:bg-accent group-hover:border-border/50 transition-all duration-300">
-                    <value.icon className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
+          {/* Right Section - Feature Cards */}
+          <motion.div
+            className="flex flex-col justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {visionFeatures.map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  className="group relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 * index }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                >
+                  {/* Progress line */}
+                  <div className="w-full h-px bg-gradient-to-r from-primary/50 to-transparent mb-4"></div>
+                  
+                  <div className="flex flex-col items-center text-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                      <feature.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    
+                    <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h4 className="text-lg md:text-xl font-bold text-foreground mb-2">{value.title}</h4>
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
-                    {value.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
