@@ -5,6 +5,7 @@ import { NexorisLogo } from "./nexoris-logo"
 import { Button } from "./ui/button"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useRouter, usePathname } from "next/navigation"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -14,6 +15,8 @@ export function Header() {
   const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("dark")
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -57,6 +60,20 @@ export function Header() {
     setTheme(newTheme) // Use the next-themes setTheme function
   }
 
+  const handleNavigation = (sectionId: string) => {
+    if (pathname === '/') {
+      // We're on the home page, scroll to section
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // We're on a different page, navigate to home with section
+      router.push(`/#${sectionId}`)
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <header
       className={`
@@ -74,53 +91,50 @@ export function Header() {
           }
         `}
       >
-        <div className="transform transition-transform duration-200 hover:scale-105">
+        <button 
+          onClick={() => router.push('/')}
+          className="transform transition-transform duration-200 hover:scale-105"
+          aria-label="Go to Home page"
+        >
           <NexorisLogo />
-        </div>
+        </button>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
-          <a
-            href="#about"
+          <button
+            onClick={() => handleNavigation('about')}
             aria-label="Go to About section"
             className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             About
-          </a>
-          <a
-            href="#vision"
+          </button>
+          <button
+            onClick={() => handleNavigation('vision')}
             aria-label="Go to Vision section"
             className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Vision
-          </a>
-          <a
-            href="#solutions"
-            aria-label="Go to Solutions section"
-            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
-          >
-            Solutions
-          </a>
-          <a
-            href="#products"
+          </button>
+          <button
+            onClick={() => handleNavigation('products')}
             aria-label="Go to Products section"
             className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Products
-          </a>
-          <a
-            href="#careers"
+          </button>
+          <button
+            onClick={() => handleNavigation('careers')}
             aria-label="Go to Careers section"
             className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Careers
-          </a>
-          <a
-            href="#team"
+          </button>
+          <button
+            onClick={() => handleNavigation('team')}
             aria-label="Go to Team section"
             className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Team
-          </a>
+          </button>
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
@@ -169,48 +183,36 @@ export function Header() {
           <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-border/50 rounded-br-2xl" />
 
           <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
-            <a
-              href="#about"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              onClick={() => handleNavigation('about')}
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105 text-left"
             >
               About
-            </a>
-            <a
-              href="#vision"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => handleNavigation('vision')}
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105 text-left"
             >
               Vision
-            </a>
-            <a
-              href="#solutions"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Solutions
-            </a>
-            <a
-              href="#products"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => handleNavigation('products')}
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105 text-left"
             >
               Products
-            </a>
-            <a
-              href="#careers"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => handleNavigation('careers')}
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105 text-left"
             >
               Careers
-            </a>
-            <a
-              href="#team"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => handleNavigation('team')}
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105 text-left"
             >
               Team
-            </a>
+            </button>
             <div className="border-t border-border/50 my-2" />
             {mounted && (
               <Button

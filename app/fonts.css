@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Montserrat Underline';
+  src: url('/font/MontserratUnderline-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Underline';
+  src: url('/font/MontserratUnderline-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Fallback static fonts for better browser support */
+@font-face {
+  font-family: 'Montserrat Underline';
+  src: url('/font/static/MontserratUnderline-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Underline';
+  src: url('/font/static/MontserratUnderline-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Underline';
+  src: url('/font/static/MontserratUnderline-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Custom Properties for the Nexoris font */
+:root {
+  --font-nexoris: 'Montserrat Underline', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Utility classes for Nexoris font */
+.font-nexoris {
+  font-family: var(--font-nexoris);
+}
+
+.text-nexoris {
+  font-family: var(--font-nexoris);
+  font-weight: 700;
+}

@@ -176,7 +176,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     // Draw text with theme-appropriate color
     const textColor = isDark ? "white" : "black"
     offscreenCtx.fillStyle = textColor
-    offscreenCtx.font = `bold ${fontSize}px Arial`
+    offscreenCtx.font = `bold ${fontSize}px "Montserrat Underline", Arial, sans-serif`
     offscreenCtx.textAlign = "center"
     offscreenCtx.textBaseline = "middle"
     offscreenCtx.fillText(word, canvas.width / 2, yPosition)

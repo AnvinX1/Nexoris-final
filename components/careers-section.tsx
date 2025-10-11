@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight, MapPin } from "lucide-react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 const jobOpenings = [
   {
@@ -25,9 +26,10 @@ const jobOpenings = [
 export function CareersSection() {
   const [currentJobIndex, setCurrentJobIndex] = useState(0)
   const currentJob = jobOpenings[currentJobIndex]
+  const router = useRouter()
 
   const scrollToCareers = () => {
-    window.location.href = '/careers'
+    router.push('/careers')
   }
 
   const nextJob = () => {
