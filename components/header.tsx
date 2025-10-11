@@ -66,11 +66,11 @@ export function Header() {
     >
       <div
         className={`
-          relative flex items-center justify-between gap-4 px-4 md:px-6 py-3 rounded-2xl border transition-all duration-300
+          relative flex items-center justify-between gap-4 px-6 md:px-8 py-4 rounded-full border transition-all duration-500 ease-out
           ${
             isScrolled
-              ? "bg-background/80 backdrop-blur-xl border-border/50 shadow-2xl"
-              : "bg-background/60 backdrop-blur-lg border-border/30 shadow-lg"
+              ? "bg-gradient-to-r from-background/95 via-background/90 to-background/95 backdrop-blur-2xl border-border/60 shadow-2xl shadow-primary/10"
+              : "bg-gradient-to-r from-background/80 via-background/70 to-background/80 backdrop-blur-xl border-border/40 shadow-xl shadow-primary/5"
           }
         `}
       >
@@ -78,39 +78,57 @@ export function Header() {
           <NexorisLogo />
         </div>
 
-        <nav className="hidden md:flex items-center gap-6" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
           <a
             href="#about"
             aria-label="Go to About section"
-            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-accent/50"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             About
-            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-4"></span>
+          </a>
+          <a
+            href="#vision"
+            aria-label="Go to Vision section"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
+          >
+            Vision
           </a>
           <a
             href="#solutions"
             aria-label="Go to Solutions section"
-            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-accent/50"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Solutions
-            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-4"></span>
+          </a>
+          <a
+            href="#products"
+            aria-label="Go to Products section"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
+          >
+            Products
+          </a>
+          <a
+            href="#careers"
+            aria-label="Go to Careers section"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
+          >
+            Careers
           </a>
           <a
             href="#team"
             aria-label="Go to Team section"
-            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-accent/50"
+            className="relative text-muted-foreground hover:text-foreground transition-all duration-300 group px-4 py-2 rounded-full hover:bg-accent/50 hover:shadow-md hover:scale-105"
           >
             Team
-            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-4"></span>
           </a>
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
           {mounted && (
             <Button
               variant="ghost"
               size="sm"
-              className="text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-200 rounded-xl border border-border/50 hover:border-border p-2"
+              className="text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-300 rounded-full border border-border/50 hover:border-border hover:shadow-md hover:scale-110 p-2"
               onClick={handleThemeToggle}
               aria-label="Toggle theme"
             >
@@ -120,14 +138,14 @@ export function Header() {
           <Button
             variant="ghost"
             size="sm"
-            className="text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-200 rounded-xl border border-border/50 hover:border-border"
+            className="text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-300 rounded-full border border-border/50 hover:border-border hover:shadow-md hover:scale-105 px-4 py-2"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
             Contact Us
           </Button>
           <Button
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground transform transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-xl"
+            className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/25 rounded-full px-4 py-2 font-medium"
             onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
           >
             Our Solutions
@@ -135,7 +153,7 @@ export function Header() {
         </div>
 
         <button
-          className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+          className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-all duration-300 rounded-full hover:bg-accent/50 hover:scale-110"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -144,7 +162,7 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-2 p-4 rounded-2xl border bg-background/80 backdrop-blur-lg border-border/50 shadow-lg relative">
+        <div className="md:hidden mt-3 p-6 rounded-3xl border bg-background/90 backdrop-blur-xl border-border/50 shadow-xl relative">
           <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-border/50 rounded-tl-2xl" />
           <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-border/50 rounded-tr-2xl" />
           <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-border/50 rounded-bl-2xl" />
@@ -153,21 +171,42 @@ export function Header() {
           <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
             <a
               href="#about"
-              className="text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-lg hover:bg-accent/50"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </a>
             <a
+              href="#vision"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Vision
+            </a>
+            <a
               href="#solutions"
-              className="text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-lg hover:bg-accent/50"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Solutions
             </a>
             <a
+              href="#products"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Products
+            </a>
+            <a
+              href="#careers"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Careers
+            </a>
+            <a
               href="#team"
-              className="text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-lg hover:bg-accent/50"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 px-4 py-3 rounded-full hover:bg-accent/50 hover:scale-105"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Team
@@ -177,7 +216,7 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="justify-start text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-border/50"
+                className="justify-start text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-border/50 rounded-full transition-all duration-300 hover:scale-105"
                 onClick={handleThemeToggle}
               >
                 {currentTheme === "dark" ? (
@@ -196,7 +235,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="sm"
-              className="justify-start text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-border/50"
+              className="justify-start text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-border/50 rounded-full transition-all duration-300 hover:scale-105"
               onClick={() => {
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 setIsMobileMenuOpen(false)
@@ -206,7 +245,7 @@ export function Header() {
             </Button>
             <Button
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground rounded-full transition-all duration-300 hover:scale-105 font-medium"
               onClick={() => {
                 document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })
                 setIsMobileMenuOpen(false)

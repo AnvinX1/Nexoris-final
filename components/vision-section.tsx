@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Cloud, BarChart3, Layers, Users, ArrowUp, Database, Cpu, Network } from "lucide-react"
-import { ParticleBackground } from "./particle-background"
 
 const visionFeatures = [
   {
@@ -41,9 +40,6 @@ export function VisionSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Particle Background */}
-            <ParticleBackground particleCount={40} className="opacity-60" />
-            
             <div className="relative z-10">
               <motion.h2
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"

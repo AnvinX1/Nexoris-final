@@ -14,13 +14,13 @@ export function ContactSection() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 422 123 4567",
+      value: "+91 8111867771",
       subValue: "Mon-Fri, 9AM-6PM",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "hello@nexoris.com",
+      value: "admin@nexoris.in",
       subValue: "We reply within 24hrs",
     },
     {
@@ -74,8 +74,8 @@ export function ContactSection() {
                 <div className="text-center">
                   <div className="w-full h-px bg-background mb-4"></div>
                   <div className="space-y-2">
-                    <p className="text-sm text-background">info@nexoris.com</p>
-                    <p className="text-sm text-background">contact@nexoris.com</p>
+                    <p className="text-sm text-background">admin@nexoris.in</p>
+                    <p className="text-sm text-background">admin@nexoris.in</p>
                   </div>
                 </div>
 
@@ -83,8 +83,8 @@ export function ContactSection() {
                 <div className="text-center">
                   <div className="w-full h-px bg-background mb-4"></div>
                   <div className="space-y-2">
-                    <p className="text-sm text-background">Tel: +91 422 123 4567</p>
-                    <p className="text-sm text-background">Fax: +91 422 123 4568</p>
+                    <p className="text-sm text-background">Tel: +91 8111867771</p>
+                    <p className="text-sm text-background">Mobile: +91 8111867771</p>
                   </div>
                 </div>
 

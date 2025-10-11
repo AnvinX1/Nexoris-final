@@ -14,13 +14,13 @@ export function FindUsSection() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 422 123 4567",
+      value: "+91 8111867771",
       subValue: "Mon-Fri, 9AM-6PM",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "hello@nexoris.com",
+      value: "admin@nexoris.in",
       subValue: "We reply within 24hrs",
     },
     {

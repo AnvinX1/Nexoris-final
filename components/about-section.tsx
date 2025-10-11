@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Shield, Zap, DollarSign } from "lucide-react"
-import { ParticleBackground } from "./particle-background"
 
 export function AboutSection() {
   const whyChooseUs = [
@@ -25,9 +24,6 @@ export function AboutSection() {
 
   return (
     <section id="about" className="relative py-16 md:py-24 px-4 bg-background overflow-hidden">
-      {/* Subtle Particle Background */}
-      <ParticleBackground particleCount={30} className="opacity-30" />
-      
       <div className="container mx-auto max-w-6xl relative z-10">
         
         {/* Top Section - Header */}

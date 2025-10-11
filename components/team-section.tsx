@@ -2,30 +2,25 @@
 
 import { motion } from "framer-motion"
 import { Linkedin } from "lucide-react"
+import PixelCard from "./ui/pixel-card"
 
 const teamMembers = [
   {
-    name: "Rajesh Kumar",
-    role: "CEO & Founder",
+    name: "Narendran G",
+    role: "CEO",
     image: "/team-member-1.jpg",
     linkedin: "#",
   },
   {
-    name: "Ashley Stewart",
-    role: "Community Manager",
+    name: "Rathi",
+    role: "Director",
     image: "/team-member-2.jpg",
     linkedin: "#",
   },
   {
-    name: "Arun Patel",
-    role: "Head of Engineering",
+    name: "Anvin P Shibu",
+    role: "COO",
     image: "/team-member-3.jpg",
-    linkedin: "#",
-  },
-  {
-    name: "Sarah Johnson",
-    role: "Head of Operations",
-    image: "/team-member-4.jpg",
     linkedin: "#",
   },
 ]
@@ -80,7 +75,7 @@ export function TeamSection() {
         </div>
 
         {/* Bottom Section - Team Member Portraits */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -90,39 +85,39 @@ export function TeamSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
-                {/* Placeholder for team member image */}
-                <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-foreground/10 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-foreground">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
+              <PixelCard 
+                variant="blue"
+                className="w-full aspect-[3/4] rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm"
+              >
+                {/* Team Member Content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 z-10">
+                  {/* Avatar */}
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-foreground/10 flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-3xl font-bold text-foreground">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </span>
                   </div>
-                </div>
-                
-                {/* Overlay with name and role */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-sm text-white/80">{member.role}</p>
-                  </div>
-                </div>
-                
-                {/* LinkedIn overlay */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  
+                  {/* Name */}
+                  <h3 className="text-xl font-bold text-foreground mb-2 text-center">
+                    {member.name}
+                  </h3>
+                  
+                  {/* Role */}
+                  <p className="text-sm text-muted-foreground text-center mb-4">
+                    {member.role}
+                  </p>
+                  
+                  {/* LinkedIn Button */}
                   <a
                     href={member.linkedin}
-                    className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
-                    aria-label={`${member.name}'s LinkedIn profile`}
+                    className="w-10 h-10 bg-primary/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors border border-primary/20"
+                    aria-label={`Connect with ${member.name} on LinkedIn`}
                   >
-                    <Linkedin className="h-4 w-4" />
+                    <Linkedin className="w-5 h-5 text-primary" />
                   </a>
                 </div>
-              </div>
+              </PixelCard>
             </motion.div>
           ))}
         </div>

@@ -17,11 +17,11 @@ export function Footer() {
             <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
               <div className="flex items-center gap-2 md:gap-3 text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
-                <span className="text-xs md:text-sm">contact@nexoris.com</span>
+                <span className="text-xs md:text-sm">admin@nexoris.in</span>
               </div>
               <div className="flex items-center gap-2 md:gap-3 text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
-                <span className="text-xs md:text-sm">+91 422 123 4567</span>
+                <span className="text-xs md:text-sm">+91 8111867771</span>
               </div>
               <div className="flex items-center gap-2 md:gap-3 text-muted-foreground hover:text-foreground transition-colors">
                 <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
